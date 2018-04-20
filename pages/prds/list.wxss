@@ -1,0 +1,10 @@
+.main-container{
+
+}
+.main-container>.item{
+  text-align: center;
+  min-height: 60px;
+  background: #e4e4e4;
+  margin: 2px;
+  border-radius: 4px;
+}

@@ -1,0 +1,13 @@
+<view class='main-container'>
+  <view class='item'>block_1</view>
+  <view class='item'>block_2</view>
+  <view class='item'>block_3</view>
+  <view class='item'>block_4</view>
+  <view class='item'>block_5</view>
+  <view class='item'>block_6</view>
+  <view class='item'>block_7</view>
+  <view class='item'>block_8</view>
+  <view class='item'>block_9</view>
+  <view class='item'>block_10</view>
+  <view class='item'>block_11</view>
+</view>
