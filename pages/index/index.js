@@ -17,6 +17,13 @@ Page({
   },
  //跳转至产品列表页面 
   goList: function () {
+
+
+
+
+
+
+    
     wx.navigateTo({
       url: '../prds/list',
     })
