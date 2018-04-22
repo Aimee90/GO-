@@ -8,17 +8,19 @@
       </block>
     </swiper>
   </view>
-  <view id="tapTest" data-hi="WeChat" bindtap="tapName"> Click me! </view>
   <scroll-view>
     <block wx:for="{{products}}" wx:for-item="item">
-      <view class='item' data-prid='{{item.id}}' bindtap='toBuy'>
+      <view class='item cart' data-prid='{{item.id}}'>
         <view class='content'>
-          <view class='name'>{{item.name}}</view>
-          <view class='desc'>{{item.description}}</view>
-          <view class='price'>￥{{item.price}}</view>
-        </view>
-        <view class='prodImg'>
           <image src='{{item.imgUrl}}'></image>
+          <view class='con-item'>
+            <view class='price'>￥{{item.price}}</view>
+          </view>
+          <icon type="success"></icon>
+        </view>
+        <view class='buy-item'>
+          <view class='icon minus' bindtap='prodMinus'>-</view>
+          <view class='icon add' bindtap='prodAdd'>+</view>
         </view>
       </view>
     </block>

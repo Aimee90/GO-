@@ -1,8 +1,8 @@
 {
   "pages":[
+    "pages/prds/list",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/prds/list"
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",

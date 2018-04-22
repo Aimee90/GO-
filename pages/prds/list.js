@@ -6,50 +6,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: ['img/b1.png','img/b2.png'],
+    imgUrls: ['img/P1.jpg','img/P2.jpg','img/P5.jpg','img/P7.jpg'],
     products:[{
       id: 1,
       name: '产品1',
-      imgUrl: 'img/default.gif',
-      description: '说明文字说明文字...',
-      price: 120
+      imgUrl: 'img/P1.jpg',
+      description: '说明文字说明文字说明文字说明文字说明文字说明文字',
+      price: 120000
     },{
       id: 2,
       name: '产品2',
-      imgUrl: 'img/default.gif',
+      imgUrl: 'img/P2.jpg',
       description: '说明文字说明文字...',
-      price: 120
+      price: 1200000
     },{
       id: 3,
       name: '产品3',
-      imgUrl: 'img/default.gif',
+      imgUrl: 'img/P3.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 4,
       name: '产品4',
-      imgUrl: 'img/default.gif',
+      imgUrl: 'img/P4.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 5,
       name: '产品5',
-      imgUrl: 'img/default.gif',
+      imgUrl: 'img/P5.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 6,
       name: '产品6',
-      imgUrl: 'img/default.gif',
+      imgUrl: 'img/P1.jpg',
       description: '说明文字说明文字...',
       price: 120
-    }]
+    }],
+    cart:{},
   },
-  toBuy: function (event){
+  prodMinus: function (event){
     console.log(event);
   },
-  tapName: function (event) {
-    console.log(event)
+  prodAdd: function (event) {
+    console.log(event,this.target);
   },
   /**
    * 生命周期函数--监听页面加载
