@@ -1,0 +1,15 @@
+<view class='container'>
+  <view class='icon'>
+    <image src='img/girl.png'></image>
+  </view>
+  <view class='input-group username'>
+    <input type='text' bindfocus='inputFocus' bindblur='inputBlur' style='box-shadow: {{view.username.shadow}}' bindinput='valueChange' placeholder='用户名' id="username"></input>
+  </view>
+  <view class='input-group password'>
+    <input type='password'  bindfocus='inputFocus' bindblur='inputBlur'  style='box-shadow: {{view.password.shadow}}' bindinput='valueChange' placeholder='密码' id='password'></input>
+  </view>
+  <view class='errmsg'><text>{{loginMsg}}</text></view>
+  <view class='btn-group'>
+    <button size='mini' class='primary' bindtap='login' loading='{{form.loading}}'>登录</button>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+/* pages/login/index.wxss */
+
+page{
+  background: linear-gradient(to bottom,#fff,#528B8B);
+  font-size: 14px;
+}
+input:focus{
+  box-shadow: 1px 1px 5px 5px #000;
+}
+.main-container{
+  display: block;
+  width: 100%;
+  height: 100%; 
+}
+.icon>image{
+  width: 86px;
+  height: 86px;
+  border-radius: 43px;
+}
+.input-group>input{
+  margin-top: 18px;
+  padding: 0 6px;
+  height: 32px; 
+  width: 210px;
+  border: 1px solid #528B8B;
+  border-radius: 4px;
+}
+.btn-group>button{
+  margin-top: 28px;
+  background: #528B8B;
+  height: 32px;
+  width: 222px;
+}
+.errmsg{
+  height: 10px;
+  line-height: 10px;
+  margin-top: 18px;
+  color: red;
+}
