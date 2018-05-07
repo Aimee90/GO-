@@ -25,13 +25,7 @@ image{
 .container>.product>.price-info>.price{
   padding-left: 10px;
 }
-.container>.product>.price-info>.cart{
-  width:28px;
-  height:20px;
-  position:absolute;
-  right:10px;
-  top:0px;
-}
+
 .container>.product>.price-info label{
   font-size: 16px;
 }
@@ -99,6 +93,40 @@ image{
 .container>.product-details>.item{
   flex-direction: column;
 }
+.footer{
+  overflow: hidden;
+  width: 100%;
+  height: 46px;
+  line-height: 46px;
+  position: fixed;
+  bottom: 0;
+  background-color:rgba(255,255,255,.58);
+}
 
+.footer>.cart{
+  width:28px;
+  height:20px;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+}
+.footer>.cart>.amount{
+  position: absolute;
+  top: -12px;
+  right: -4px;
+  color: red;
+  font-size: 12px;
+}
+.footer>.button{
+  width: 30%;
+  height: 100%;
+  color: #FFF;
+  font-weight: 700;
+  text-align: center;
+  background-color: red;
+  position:absolute;
+  right: 0;
+  top: 0;
+}
 
 

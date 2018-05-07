@@ -4,7 +4,6 @@
   <view class='product'>
     <view class='price-info block-item'>
       <view class='price'>￥<label>{{product.price}}</label><text>指导价</text></view>
-      <view class='cart'><image src='../imgs/cart.jpg'></image></view>
     </view>
     <view class='labels-info'>
       <block wx:for="{{product.labels}}" wx:for-item="item">
@@ -32,5 +31,10 @@
     <block wx:for="{{product.details}}" wx:for-item="item">
       <view class="item"><image src='{{item}}'></image></view>
     </block>
+  </view>
+
+  <view class='footer'>
+    <view class='cart' bindtap='go2Cart'><image src='../imgs/cart.jpg'></image><view class='amount'>{{selected.amount}}</view></view>
+    <view class='button' bindtap='add2Cart'>加入购物车</view>
   </view>
 </view>

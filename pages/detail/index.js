@@ -1,4 +1,5 @@
 // pages/detail/index.js
+const Utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -18,10 +19,24 @@ Page({
         '../imgs/P3.jpg'
       ]
     },
-    specShow: 'hide'
+    specShow: 'hide',
+    selected:{
+      amount: 0
+    }
   },
   specHandler: function(){
     !!this.data.specShow ? this.setData({ specShow: '' }) : this.setData({ specShow: 'hide' })
+  },
+  add2Cart: function(){
+    var amount = this.data.selected.amount;
+    this.setData({
+      selected:{
+        amount: amount+1
+      }
+    })
+  },
+  go2Cart: function(){
+    Utils.redirectTo('../cart/index')
   },
   /**
    * 生命周期函数--监听页面加载
