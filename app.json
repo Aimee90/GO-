@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/detail/index",
     "pages/login/index",
     "pages/index/index",
     "pages/prds/list",
+    "pages/detail/index",
     "pages/manage/index"
   ],
   "window": {
