@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const redirectTo = (url,param) =>{
+  wx.navigateTo({
+    url: url,
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  redirectTo: redirectTo
 }

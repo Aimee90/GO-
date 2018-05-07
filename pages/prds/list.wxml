@@ -10,17 +10,13 @@
   </view>
   <scroll-view>
     <block wx:for="{{products}}" wx:for-item="item">
-      <view class='item cart' data-prid='{{item.id}}'>
+      <view class='item cart' data-prid='{{item.id}}' bindtap='go2Detail'>
         <view class='content'>
           <image src='{{item.imgUrl}}'></image>
-          <view class='con-item'>
-            <view class='price'>￥{{item.price}}</view>
-          </view>
-          <icon type="success"></icon>
         </view>
         <view class='buy-item'>
-          <view class='icon minus' bindtap='prodMinus'>-</view>
-          <view class='icon add' bindtap='prodAdd'>+</view>
+          <view class='prd-name'>{{item.name}}<view class='price'>￥{{item.price}}</view></view>
+          <view class='prd-desc'>{{item.description}}</view>
         </view>
       </view>
     </block>

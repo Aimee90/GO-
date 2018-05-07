@@ -1,6 +1,8 @@
+
+const Utils = require('../../utils/util.js')
+
 // pages/login/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -37,14 +39,13 @@ Page({
   login: function(){
     var form = this.data.form;
     if(this.checkValid()){
-      form.loading = true;
-      this.setData({ form: form})
+      // form.loading = true;
+      Utils.redirectTo('../prds/list')
     }
   },
   checkValid: function(){
     var form = this.data.form;
     if (!form.username){
-      console.log(!form.username, form.username);
       this.setData({ loginMsg: '请输入用户名' })
       return;
     }
@@ -54,6 +55,20 @@ Page({
     }
     this.setData({ loginMsg: '' })
     return true;
+  },
+  resetHandler: function(){
+    this.setData({ 
+      view: { 
+        modal: 'show'
+      }
+    });
+  },
+  resetCancelHandler: function(){
+    this.setData({
+      view: {
+        modal: 'hide'
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载
