@@ -8,6 +8,10 @@
       </block>
     </swiper>
   </view>
+  <view class='filter'>
+    <view class='' bindtap=''>价格</view>
+    <view class='' bindtap=''>销量</view>
+  </view>
   <scroll-view>
     <block wx:for="{{products}}" wx:for-item="item">
       <view class='item cart' data-prid='{{item.id}}' bindtap='go2Detail'>
@@ -15,8 +19,13 @@
           <image src='{{item.imgUrl}}'></image>
         </view>
         <view class='buy-item'>
-          <view class='prd-name'>{{item.name}}<view class='price'>￥{{item.price}}</view></view>
+          <view class='prd-name'>{{item.name}}</view>
           <view class='prd-desc'>{{item.description}}</view>
+          <view class='prd-info'>
+            <view class='price'>￥{{item.price}}</view>
+            <text>销量：{{item.volume}}</text>
+          </view>
+          
         </view>
       </view>
     </block>
