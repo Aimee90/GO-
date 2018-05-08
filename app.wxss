@@ -132,3 +132,27 @@ page{
   right: 0;
   top: 0;
 }
+
+
+.spec-num>.num{
+  border: 1px solid #EFEFEF;
+  border-radius: 2px;
+  width: 88px;
+}
+.spec-num>.num> view{
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  padding: 2px 0;
+}
+.spec-num>.num>.info{
+  width: 44px;
+  border-left: 1px solid #EFEFEF;
+  border-right: 1px solid #EFEFEF;
+} 
+.spec-num>.num>.add{
+  color: #00c37d;
+}
+.spec-num>.num>.minus{
+  color: red;
+}

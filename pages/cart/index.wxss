@@ -80,3 +80,7 @@ page{
 .address>.edit{
   color: #00c37d;
 }
+
+.spec-num>.num{
+  float: right;
+}

@@ -7,6 +7,7 @@ Page({
    */
   data: {
     product:{
+      id: '1',
       proImg: '../imgs/P1.jpg',
       price: 150,
       name: '产品一',

@@ -17,6 +17,17 @@ Page({
   addressEdit: function(){
     Utils.showModal('','地址编辑');
   },
+  amountHandler: function(e){
+    const prodId = e.target.dataset.prodid,
+          specId = e.target.dataset.specid,
+          optype = e.target.dataset.type;
+    this.setData({
+      cart: this.data.cart.map((item) => {
+        item.id == prodId && item.specifications.id == specId && ('a' == optype ? item.amount++ : item.amount>1&&item.amount--);
+        return item;
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

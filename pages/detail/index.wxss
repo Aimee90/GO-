@@ -118,25 +118,4 @@ image{
 .spec-list>.spec-num>.title{
   font-weight: 700;
 }
-.spec-list>.spec-num>.num{
-  border: 1px solid #EFEFEF;
-  border-radius: 2px;
-}
-.spec-list>.spec-num>.num> view{
-  display: inline-block;
-  text-align: center;
-  width: 20px;
-  padding: 2px 0;
-}
-.spec-list>.spec-num>.num>.info{
-  width: 54px;
-  border-left: 1px solid #EFEFEF;
-  border-right: 1px solid #EFEFEF;
-} 
-.spec-list>.spec-num>.num>.add{
-  color: #00c37d;
-}
-.spec-list>.spec-num>.num>.minus{
-  color: red;
-}
 
