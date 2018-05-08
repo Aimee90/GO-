@@ -20,9 +20,9 @@ const redirectTo = (url,param) =>{
   })
 }
 
-const showModal = (msg) =>{
+const showModal = (msg,title) =>{
   wx.showModal({
-    title: '提示',
+    title: title||'提示',
     content: msg,
   })
 }

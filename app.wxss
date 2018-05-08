@@ -31,6 +31,12 @@ page{
   color: #999 !important;
   background-color: transparent !important;
 }
+.emphasize{
+  font-weight: 700;
+}
+.block-item{
+  border-bottom: 1px solid #EFEFEF !important;
+}
 .container {
   height: 100%;
   display: flex;

@@ -15,9 +15,7 @@ image{
   background-color:#FFF;
   padding-top: 10px;
 }
-.container .block-item{
-  border-bottom: 1px solid #EFEFEF;
-}
+
 .container>.product>.price-info{
   position: relative;
   padding-bottom: 6px;

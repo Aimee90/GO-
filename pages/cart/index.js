@@ -1,16 +1,21 @@
 // pages/cart/index.js
+const Utils = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    address: "南京市玄武区前湖后村1号中山陵园风景区",
     cart:[]
   },
   removeAll: function(){
     this.setData({
       cart: []
     })
+  },
+  addressEdit: function(){
+    Utils.showModal('','地址编辑');
   },
   /**
    * 生命周期函数--监听页面加载

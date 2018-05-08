@@ -8,10 +8,15 @@
 </block>
 <block wx:else>
     <view class="cart" wx:for="{{cart}}" wx:key="item">
+      <view class='address block-item clearfix'>
+        <view class='info emphasize'>收货地址：<text>{{address}}</text></view>
+        <view class='edit' bindtap='addressEdit'>编辑</view>
+      </view>
       <view class='prod-item clearfix'>
         <view class='fl'><image src='{{item.proImg}}'></image></view>
         <view class='fr clearfix'>
           <view class='name'>{{item.name}}</view>
+          <view class='spec'>规格: {{item.specifications.name}}</view>
           <view class='price'>￥{{item.price}}</view>
           <view class='amount'>{{item.amount}}件</view>
         </view>

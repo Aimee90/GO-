@@ -43,15 +43,40 @@ page{
 .prod-item>.fr>view{
   float: left;
 }
-.prod-item>.fr>.name{
+.prod-item>.fr>.name,.prod-item>.fr>.spec{
   width: 100%;
-  font-size: 16px;
-  height: 48px;
+  height: 24px;
+}
+.prod-item>.fr>.spec{
+  font-size: 12px;
+  color: #999;
+  padding-left: 4px;
 }
 .prod-item>.fr>.price,.prod-item>.fr>.amount{
   width: 50%;
 }
 .prod-item>.fr>.amount{
   text-align: right;
+  font-size: 12px;
+  color: #999;
 }
 
+
+.address{
+  position: relative;
+  padding: 8px;
+  font-size: 12px;
+  color: #999;
+}
+.address>view{
+  float: left;
+}
+.address>.info{
+  width: 90%;
+}
+.address>.info>text{
+  font-weight: 100;
+}
+.address>.edit{
+  color: #00c37d;
+}
