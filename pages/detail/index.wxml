@@ -21,8 +21,16 @@
       </view>
       <view class='spec-list {{specShow}}'>
         <block wx:for="{{product.specifications}}" wx:for-item="spec">
-          <view>{{spec}}</view>
+          <view class='{{!!spec.selected?"selected":""}}' bindtap='prodSelectHandler' id='spec-{{spec.id}}'>{{spec.name}}</view>
         </block>
+        <view class='spec-num clearfix'>
+          <view class='title fl'>商品数目</view>
+          <view class='num fr'>
+            <view bindtap='minusHandler' class='icon'>-</view>
+            <view class='info'>{{selected.num}}</view>
+            <view bindtap='addHandler' class='icon'>+</view>
+          </view>
+        </view>
       </view>
     </view>
   </view>

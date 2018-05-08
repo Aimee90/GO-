@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/prds/list",
+    "pages/detail/index",
     "pages/login/index",
     "pages/index/index",
-    "pages/detail/index",
     
+    "pages/prds/list",
     "pages/manage/index",
     "pages/cart/index"
   ],

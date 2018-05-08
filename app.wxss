@@ -6,6 +6,13 @@
 .clearfix:after {
   clear: both; 
 }
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+
 page{
   background: #efefef;
   font-size: 14px;

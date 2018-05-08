@@ -12,7 +12,7 @@ Page({
       name: '产品一',
       description: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明',
       labels: [{ name: '标签1', type: 'hot' }, { name: '标签2', type: 'rec'}],
-      specifications:['奇趣版','标准版'],
+      specifications: [{ id: '1', name: '奇趣版', selected: false }, { id: '2',name: '标准版',selected: false}],
       details:[
         '../imgs/P1.jpg',
         '../imgs/P2.jpg',
@@ -21,6 +21,7 @@ Page({
     },
     specShow: 'hide',
     selected:{
+      num: 0,
       amount: 0
     }
   },
@@ -28,15 +29,53 @@ Page({
     !!this.data.specShow ? this.setData({ specShow: '' }) : this.setData({ specShow: 'hide' })
   },
   add2Cart: function(){
-    var amount = this.data.selected.amount;
+    var selected = this.data.selected;
+    if (!selected.spec){
+      return;
+    }
+    selected.amount = selected.amount + selected.num;
+    var cart = selected.cart || {};
+    cart[selected.spec] = !!cart[selected.spec] ? cart[selected.spec] + selected.num : selected.num;
+    selected.cart = cart;
     this.setData({
-      selected:{
-        amount: amount+1
-      }
+      selected: selected
     })
   },
   go2Cart: function(){
     Utils.redirectTo('../cart/index')
+  },
+  addHandler: function(){
+    var selected = this.data.selected;
+    selected.num = selected.num + 1;
+    this.setData({
+      selected: selected
+    })
+  },
+  minusHandler: function(){
+    var selected = this.data.selected;
+    if (selected.num <= 0) {
+      Utils.showToast('亲,不能再少了啦~');
+      return;
+    }
+    selected.num = selected.num - 1;
+    this.setData({
+      selected: selected
+    })
+  },
+  prodSelectHandler: function(e){
+    var specId = e.target.id.substr(5);
+    var specifications = this.data.product.specifications.map((spec) => { 
+      spec.selected = spec.id == specId?  !spec.selected : false;
+      return spec;
+      });
+    var product = this.data.product,
+        selected = this.data.selected;
+    product.specifications = specifications;
+    selected.spec = specId;
+    this.setData({
+      product: product,
+      selected: selected
+    })
   },
   /**
    * 生命周期函数--监听页面加载

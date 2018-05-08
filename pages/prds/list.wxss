@@ -84,6 +84,8 @@ image{
 .main-container>.search>input{
   border: 1px solid #efefef;
   padding-left: 32px;
+  padding-top:2px;
+  padding-bottom:2px;
   margin: auto;
   width: 60%;
   border-radius: 2px;

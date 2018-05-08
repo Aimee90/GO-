@@ -20,7 +20,23 @@ const redirectTo = (url,param) =>{
   })
 }
 
+const showModal = (msg) =>{
+  wx.showModal({
+    title: '提示',
+    content: msg,
+  })
+}
+const showToast = (msg, info) =>{
+  wx.showToast({
+    title: msg,
+    image:'none',
+    duration: 1000,
+    mask: true
+  })
+}
 module.exports = {
   formatTime: formatTime,
-  redirectTo: redirectTo
+  redirectTo: redirectTo,
+  showModal: showModal,
+  showToast: showToast
 }

@@ -75,10 +75,16 @@ image{
   color: #999;
   width: 2%;
 }
+.container>.product>.spec-info>.spec-list>view.selected{
+  border-color: #00c37d;
+}
 .container>.product>.spec-info>.spec-list>view{
-  padding:8px 0;
-  color: #999;
-  font-size: 12px;
+  padding:4px;
+  color:#999;
+  font-size:12px;
+  margin:4px 0;
+  border-radius:4px;
+  border: 1px solid transparent;
 }
 
 .container>.product-details{
@@ -130,3 +136,24 @@ image{
 }
 
 
+.spec-list>.spec-num{
+  border-top: 1px solid #EFEFEF;
+}
+.spec-list>.spec-num>.title{
+  font-weight: 700;
+}
+.spec-list>.spec-num>.num{
+  border: 1px solid #EFEFEF;
+  border-radius: 2px;
+}
+.spec-list>.spec-num>.num> view{
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  padding: 2px 0;
+}
+.spec-list>.spec-num>.num>.info{
+  width: 54px;
+  border-left: 1px solid #EFEFEF;
+  border-right: 1px solid #EFEFEF;
+}
