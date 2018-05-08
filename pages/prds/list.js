@@ -16,35 +16,35 @@ Page({
     },{
       id: 2,
       name: '产品2',
-      volume: 100,
+      volume: 1,
       imgUrl: '../imgs/P2.jpg',
       description: '说明文字说明文字...',
       price: 1200000
     },{
       id: 3,
       name: '产品3',
-      volume: 100,
+      volume: 23,
       imgUrl: '../imgs/P3.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 4,
       name: '产品4',
-      volume: 100,
+      volume: 3,
       imgUrl: '../imgs/P4.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 5,
       name: '产品5',
-      volume: 100,
+      volume: 4,
       imgUrl: '../imgs/P5.jpg',
       description: '说明文字说明文字...',
       price: 120
     },{
       id: 6,
       name: '产品6',
-      volume: 100,
+      volume: 4,
       imgUrl: '../imgs/P1.jpg',
       description: '说明文字说明文字...',
       price: 120
@@ -63,18 +63,33 @@ Page({
     var sort = this.data.sort;
     switch(sort[targetId]){
       case 'none':
-      sort[targetId] = 'asc';
+        sort = {price: 'none',volume: 'none'};
+        sort[targetId] = 'asc';
       break;
       case 'asc':
-      sort[targetId] = 'desc';
+        sort = { price: 'none', volume: 'none' };
+        sort[targetId] = 'desc';
       break;
       case 'desc':
-      sort[targetId] = 'none';
+        sort = { price: 'none', volume: 'none' };
+        sort[targetId] = 'asc';
       break;
     }
+    this.productSort(targetId, sort[targetId]);
     this.setData({
       sort: sort
     })
+  },
+  productSort: function (sortItem, sort){
+    var products = this.data.products;
+    products.sort(function(prev, next){
+      return 'asc' == sort ? (Number(prev[sortItem]) - Number(next[sortItem])) : (Number(next[sortItem]) - Number(prev[sortItem]));
+    })
+    this.setData({
+      products: products
+    })
+
+    console.log(this.data);
   },
   /**
    * 生命周期函数--监听页面加载

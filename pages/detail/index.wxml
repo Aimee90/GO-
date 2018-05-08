@@ -16,7 +16,7 @@
     </view>
     <view class='spec-info block-item'>
       <view class='spec-item' bindtap='specHandler'>
-        <view class='selected'><label>已选</label><text>奇趣版</text></view>
+        <view class='selected'><label>已选</label><text>{{selected.specName}}</text><text>{{selected.num}}件</text></view>
         <view class='arrow'>...</view>
       </view>
       <view class='spec-list {{specShow}}'>
@@ -26,9 +26,9 @@
         <view class='spec-num clearfix'>
           <view class='title fl'>商品数目</view>
           <view class='num fr'>
-            <view bindtap='minusHandler' class='icon'>-</view>
+            <view bindtap='minusHandler' class='icon minus {{icon.minusabled}}'>-</view>
             <view class='info'>{{selected.num}}</view>
-            <view bindtap='addHandler' class='icon'>+</view>
+            <view bindtap='addHandler' class='icon add {{icon.addabled}}'>+</view>
           </view>
         </view>
       </view>

@@ -12,17 +12,24 @@ Page({
       name: '产品一',
       description: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明',
       labels: [{ name: '标签1', type: 'hot' }, { name: '标签2', type: 'rec'}],
-      specifications: [{ id: '1', name: '奇趣版', selected: false }, { id: '2',name: '标准版',selected: false}],
+      specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2',name: '标准版',selected: false}],
       details:[
         '../imgs/P1.jpg',
         '../imgs/P2.jpg',
         '../imgs/P3.jpg'
       ]
     },
-    specShow: 'hide',
+    specShow: '',
     selected:{
-      num: 0,
-      amount: 0
+      cart:[],
+      num: 1,
+      amount: 0,
+      spec: 1,
+      specName: '奇趣版'
+    },
+    icon:{
+      minusabled: 'disabled',
+      addabled: ''
     }
   },
   specHandler: function(){
@@ -42,36 +49,54 @@ Page({
     })
   },
   go2Cart: function(){
-    Utils.redirectTo('../cart/index')
+    // if (!this.data.selected.cart.length) return;
+    var cart = [];
+    this.data.selected.cart.map((value, key)=>{
+      var specification = this.data.product.specifications.find((spec)=>{
+        return spec.id == key;
+      });
+      
+      cart.push(Object.assign({}, this.data.product, { specifications: specification }, { amount: value}));
+    });
+    Utils.redirectTo('../cart/index?cart=' + JSON.stringify(cart));
   },
   addHandler: function(){
-    var selected = this.data.selected;
+    var selected = this.data.selected,
+      icon = this.data.icon;
     selected.num = selected.num + 1;
+    icon.minusabled = '';
     this.setData({
-      selected: selected
+      selected: selected,
+      icon: icon
     })
   },
   minusHandler: function(){
-    var selected = this.data.selected;
-    if (selected.num <= 0) {
-      Utils.showToast('亲,不能再少了啦~');
-      return;
-    }
+    var selected = this.data.selected,
+        icon = this.data.icon;
+    if ('disabled' == icon.minusabled) return;
+    if (selected.num == 2) icon.minusabled = 'disabled';
     selected.num = selected.num - 1;
     this.setData({
-      selected: selected
+      selected: selected,
+      icon: icon
     })
   },
   prodSelectHandler: function(e){
     var specId = e.target.id.substr(5);
-    var specifications = this.data.product.specifications.map((spec) => { 
-      spec.selected = spec.id == specId?  !spec.selected : false;
+    var product = this.data.product,
+      selected = this.data.selected;
+    var specifications = this.data.product.specifications.map((spec) => {
+      if (spec.id == specId) {
+        spec.selected = !spec.selected;
+        selected.specName = spec.name;
+      }else{
+        spec.selected = false;
+      }
       return spec;
       });
-    var product = this.data.product,
-        selected = this.data.selected;
     product.specifications = specifications;
     selected.spec = specId;
+    selected.num = 1;
     this.setData({
       product: product,
       selected: selected

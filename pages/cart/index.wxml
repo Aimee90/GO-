@@ -1,2 +1,25 @@
 <!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<block wx:if="{{cart.length==0}}">
+  <view class="no-res">
+    <image src='../imgs/cart.jpg'></image>
+    <text>您的购物车还是空的哦</text>
+  </view>
+  
+</block>
+<block wx:else>
+    <view class="cart" wx:for="{{cart}}" wx:key="item">
+      <view class='prod-item clearfix'>
+        <view class='fl'><image src='{{item.proImg}}'></image></view>
+        <view class='fr clearfix'>
+          <view class='name'>{{item.name}}</view>
+          <view class='price'>￥{{item.price}}</view>
+          <view class='amount'>{{item.amount}}件</view>
+        </view>
+      </view>
+    </view>
+</block>
+
+<view class='footer'>
+  <view class='clear-cart' hover-class='hover' bindtap='removeAll'>清空购物车</view>
+  <view class='button' bindtap='clearCart'>结算</view>
+</view>

@@ -5,14 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    cart:[]
   },
-
+  removeAll: function(){
+    this.setData({
+      cart: []
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    const cart = JSON.parse(options.cart);
+    this.setData({
+      cart: cart
+    })
+    console.log(this.data);
   },
 
   /**
