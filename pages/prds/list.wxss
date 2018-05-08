@@ -73,12 +73,13 @@ image{
 .main-container>.search{
   position: relative;
   background: #FFF;
-  padding: 10px 0;
+  padding: 8px 0;
+  margin: 2px 0;
 }
 .main-container>.search>canvas{
   position: absolute;
   left: 17%;
-  top: 14px;
+  top: 12px;
 }
 .main-container>.search>input{
   border: 1px solid #efefef;
