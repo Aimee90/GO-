@@ -50,9 +50,31 @@ Page({
       price: 120
     }],
     cart:{},
+    sort:{
+      price: 'none',
+      volume: 'none'
+    }
   },
   go2Detail: function(){
     Utils.redirectTo('../detail/index')
+  },
+  sortHandler: function(e){
+    const targetId = e.target.id;
+    var sort = this.data.sort;
+    switch(sort[targetId]){
+      case 'none':
+      sort[targetId] = 'asc';
+      break;
+      case 'asc':
+      sort[targetId] = 'desc';
+      break;
+      case 'desc':
+      sort[targetId] = 'none';
+      break;
+    }
+    this.setData({
+      sort: sort
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -65,7 +87,31 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    var ctx = wx.createCanvasContext('magnifier');
+      ctx.setStrokeStyle = '#f00';
+      ctx.setLineWidth = 1;
+      ctx.beginPath();
+      ctx.clearRect(0, 0, 19, 19);
+      ctx.arc(9, 9, 8, 0.37 * Math.PI, 2.27 * Math.PI, false);
+      ctx.lineTo(19, 19);
+      ctx.stroke();
+      ctx.draw();
+    // context.setStrokeStyle("#00ff00")
+    // context.setLineWidth(5)
+    // context.rect(0, 0, 200, 200)
+    // context.stroke()
+    // context.setStrokeStyle("#ff0000")
+    // context.setLineWidth(2)
+    // context.moveTo(160, 100)
+    // context.arc(100, 100, 60, 0, 2 * Math.PI, true)
+    // context.moveTo(140, 100)
+    // context.arc(100, 100, 40, 0, Math.PI, false)
+    // context.moveTo(85, 80)
+    // context.arc(80, 80, 5, 0, 2 * Math.PI, true)
+    // context.moveTo(125, 80)
+    // context.arc(120, 80, 5, 0, 2 * Math.PI, true)
+    // context.stroke()
+    // context.draw()
   },
 
   /**

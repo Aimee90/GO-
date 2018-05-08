@@ -5,13 +5,23 @@ image{
   width: 100%;
   height: 100%;
 }
+.main-container>.sort{
+  background-color: #FFF;
+}
+.main-container>.sort>view{
+  width: 18%;
+  padding: 6px 0;
+  text-align: center;
+  float: left;
+}
+
 .main-container .item{
-  height: 98px;
+  height: 118px;
   width: 98%;
   float: left;
   background: #FFF;
-  margin-top: 8px;
-  margin: 1%;
+  margin-top: 4px;
+  padding: 4px;
   overflow: hidden;
   position: relative;
 }
@@ -59,4 +69,21 @@ image{
 }
 .main-container .item>.buy-item>.prd-info>.price,.main-container .item>.buy-item>.prd-info>text{
   margin-top: 4px;
+}
+.main-container>.search{
+  position: relative;
+  background: #FFF;
+  padding: 10px 0;
+}
+.main-container>.search>canvas{
+  position: absolute;
+  left: 17%;
+  top: 14px;
+}
+.main-container>.search>input{
+  border: 1px solid #efefef;
+  padding-left: 32px;
+  margin: auto;
+  width: 60%;
+  border-radius: 2px;
 }

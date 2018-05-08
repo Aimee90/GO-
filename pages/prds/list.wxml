@@ -8,9 +8,13 @@
       </block>
     </swiper>
   </view>
-  <view class='filter'>
-    <view class='' bindtap=''>价格</view>
-    <view class='' bindtap=''>销量</view>
+  <view class='search'>
+    <canvas style="width: 20px; height: 20px;" canvas-id="magnifier"></canvas>
+    <input bindinput='searchHandler' placeholder='请输入商品名称'></input>
+  </view>
+  <view class='sort clearfix'>
+    <view bindtap='sortHandler' id='price'>价格<icon class='trigger {{sort.price}}'></icon></view>
+    <view bindtap='sortHandler' id='volume'>销量<icon class='trigger {{sort.volume}}'></icon></view>
   </view>
   <scroll-view>
     <block wx:for="{{products}}" wx:for-item="item">
