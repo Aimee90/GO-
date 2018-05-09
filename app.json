@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/detail/index",
+    "pages/prds/list",
     "pages/login/index",
     "pages/index/index",
-    "pages/prds/list",
     
-    "pages/manage/index",
-    "pages/cart/index"
+    "pages/detail/index",
+    "pages/cart/index",
+    "pages/manage/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

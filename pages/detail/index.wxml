@@ -6,13 +6,13 @@
       <view class='price'>￥<label>{{product.price}}</label><text>指导价</text></view>
     </view>
     <view class='labels-info'>
-      <block wx:for="{{product.labels}}" wx:for-item="item">
+      <block wx:for="{{product.labels}}" wx:key="item">
         <view class="{{item.type}}">{{item.name}}</view>
       </block>
     </view>
     <view class='product-info block-item'>
       <view class=''></view>
-      <view class='product-name'>童趣小卡车</view>
+      <view class='product-name'>{{product.name}}</view>
     </view>
     <view class='spec-info block-item'>
       <view class='spec-item' bindtap='specHandler'>
@@ -20,8 +20,8 @@
         <view class='arrow'>...</view>
       </view>
       <view class='spec-list {{specShow}}'>
-        <block wx:for="{{product.specifications}}" wx:for-item="spec">
-          <view class='{{!!spec.selected?"selected":""}}' bindtap='prodSelectHandler' id='spec-{{spec.id}}'>{{spec.name}}</view>
+        <block wx:for="{{product.specifications}}" wx:key="item">
+          <view class='{{!!item.selected?"selected":""}}' bindtap='prodSelectHandler' id='spec-{{item.id}}'>{{item.name}}</view>
         </block>
         <view class='spec-num clearfix'>
           <view class='title fl'>商品数目</view>
@@ -36,7 +36,7 @@
   </view>
   <view class='product-details'>
     <view class='title block-item'>产品描述</view>
-    <block wx:for="{{product.details}}" wx:for-item="item">
+    <block wx:for="{{product.details}}" wx:key="item">
       <view class="item"><image src='{{item}}'></image></view>
     </block>
   </view>

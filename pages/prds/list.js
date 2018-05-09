@@ -8,46 +8,88 @@ Page({
     imgUrls: ['../imgs/P1.jpg', '../imgs/P2.jpg', '../imgs/P5.jpg','../imgs/P7.jpg'],
     products:[{
       id: 1,
-      name: '产品1',
+      proImg: '../imgs/P1.jpg',
+      price: 150,
       volume: 100,
-      imgUrl: '../imgs/P1.jpg',
-      description: '说明文字说明文字说明说明文字说明文字说明文字说明说明文字说明说明文字说明文字说明说明文字说明文字说明说明文字说明文字说明',
-      price: 120000
+      name: '产品一',
+      description: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明',
+      labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+      specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+      details: [
+        '../imgs/P1.jpg',
+        '../imgs/P2.jpg',
+        '../imgs/P3.jpg'
+      ]
     },{
-      id: 2,
-      name: '产品2',
-      volume: 1,
-      imgUrl: '../imgs/P2.jpg',
-      description: '说明文字说明文字...',
-      price: 1200000
+        id: 2,
+        proImg: '../imgs/P2.jpg',
+        price: 110,
+        volume: 10,
+        name: '产品二',
+        description: '产品说明2',
+        labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+        specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+        details: [
+          '../imgs/P1.jpg',
+          '../imgs/P2.jpg',
+          '../imgs/P3.jpg'
+        ]
     },{
-      id: 3,
-      name: '产品3',
-      volume: 23,
-      imgUrl: '../imgs/P3.jpg',
-      description: '说明文字说明文字...',
-      price: 120
+        id: 3,
+        proImg: '../imgs/P3.jpg',
+        price: 98,
+        volume: 12,
+        name: '产品三',
+        description: '产品说明3',
+        labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+        specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+        details: [
+          '../imgs/P1.jpg',
+          '../imgs/P2.jpg',
+          '../imgs/P3.jpg'
+        ]
     },{
-      id: 4,
-      name: '产品4',
-      volume: 3,
-      imgUrl: '../imgs/P4.jpg',
-      description: '说明文字说明文字...',
-      price: 120
+        id: 4,
+        proImg: '../imgs/P4.jpg',
+        price: 14,
+        volume: 30,
+        name: '产品四',
+        description: '产品说明4',
+        labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+        specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+        details: [
+          '../imgs/P1.jpg',
+          '../imgs/P2.jpg',
+          '../imgs/P3.jpg'
+        ]
     },{
-      id: 5,
-      name: '产品5',
-      volume: 4,
-      imgUrl: '../imgs/P5.jpg',
-      description: '说明文字说明文字...',
-      price: 120
+        id: 5,
+        proImg: '../imgs/P5.jpg',
+        price: 88,
+        volume: 10,
+        name: '产品5',
+        description: '产品说明5',
+        labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+        specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+        details: [
+          '../imgs/P1.jpg',
+          '../imgs/P2.jpg',
+          '../imgs/P3.jpg'
+        ]
     },{
-      id: 6,
-      name: '产品6',
-      volume: 4,
-      imgUrl: '../imgs/P1.jpg',
-      description: '说明文字说明文字...',
-      price: 120
+        id: 6,
+        proImg: '../imgs/P6.jpg',
+        price: 160,
+        volume: 16,
+        name: '产品二',
+        description: '产品说明6',
+        labels: [{ name: '满99包邮', type: 'hot' }, { name: '闪电发货', type: 'rec' }],
+        specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2', name: '标准版', selected: false }],
+        details: [
+          '../imgs/P1.jpg',
+          '../imgs/P2.jpg',
+          '../imgs/P3.jpg'
+        ]
     }],
     cart:{},
     sort:{
@@ -55,8 +97,10 @@ Page({
       volume: 'none'
     }
   },
-  go2Detail: function(){
-    Utils.redirectTo('../detail/index')
+  go2Detail: function(e){
+    Utils.redirectTo('../detail/index?prod=' + JSON.stringify(this.data.products.find((prod) => {
+      return prod.id == e.currentTarget.dataset.prid;
+    })))
   },
   sortHandler: function(e){
     const targetId = e.target.id;

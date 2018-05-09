@@ -1,13 +1,13 @@
 // pages/cart/index.js
 const Utils = require('../../utils/util.js')
+// modal from bottom
+const Modal = require('../../template/modal/modal.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address: "南京市玄武区前湖后村1号中山陵园风景区",
-    cart:[]
   },
   removeAll: function(){
     this.setData({
@@ -15,7 +15,19 @@ Page({
     })
   },
   addressEdit: function(){
-    Utils.showModal('','地址编辑');
+    Utils.Location.locate((loc)=>{
+      console.log(loc);
+      this.setData({
+          receiver: loc.userName,
+          phone: loc.telNumber,
+          address: {
+            provinceName: loc.provinceName,
+            cityName: loc.cityName,
+            countyName: loc.countyName,
+            detailInfo: loc.detailInfo
+          }
+        })
+    });
   },
   amountHandler: function(e){
     const prodId = e.target.dataset.prodid,
@@ -33,12 +45,52 @@ Page({
    */
   onLoad: function (options) {
     const cart = JSON.parse(options.cart);
+    var loc = wx.getStorageSync(Utils.Location.defaultKey);
+    loc = !!loc ? loc : {}
     this.setData({
+      receiver: loc.userName||'',
+      phone: loc.telNumber||'',
+      address: {
+        provinceName: loc.provinceName||'',
+        cityName: loc.cityName||'',
+        countyName: loc.countyName||'',
+        detailInfo: loc.detailInfo||''
+      },
       cart: cart
     })
-    console.log(this.data);
   },
+  specSelectHandler: function(e){
+      const id = e.target.dataset.id,pid = e.target.dataset.pid;
+      const product = this.data.cart.find((item)=>{
+        if(item.id==pid){
+          return item;
+        }
+      })
+      this.setData({
+        specModal: Modal.BModal.init({
+          maskHidden: true,
+          parendId: product.id,
+          selected: id,
+          selectItem: product.specifications,
+          tapEvent: 'specChoose',
+          close: 'specClose'
+        })
+      })
+  },
+  specChoose: function(e){
+    var specId = e.target.dataset.id, 
+        productId = this.data.specModal.parentId;
+    this.data.cart.map(item=>{
 
+    })
+    this.specClose();
+  },
+  specClose: function(){
+    var specModal = this.data.specModal;
+    this.setData({
+      specModal: specModal.close()
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -56,20 +56,6 @@ Page({
     this.setData({ loginMsg: '' })
     return true;
   },
-  resetHandler: function(){
-    this.setData({ 
-      view: { 
-        modal: 'show'
-      }
-    });
-  },
-  resetCancelHandler: function(){
-    this.setData({
-      view: {
-        modal: 'hide'
-      }
-    });
-  },
   /**
    * 生命周期函数--监听页面加载
    */

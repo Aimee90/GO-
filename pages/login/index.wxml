@@ -15,21 +15,6 @@
   <view class="forget">忘记密码? <view class="reset_password">重置密码</view></view>
 </view>
 
-<!-- 
-<view class="modal-container {{view.modal}}">
-  <view class='layer-box-shadow'></view>
-  <view class='layer-content'>
-    <view class='title'>标题</view>
-    <view class='content'></view>
-    <view class='opt'>
-      <button size='mini' class='ok'>确定</button>
-      <button size='mini' class='cancel' bindtap='resetCancelHandler'>取消</button>
-    </view>
-  </view>
-</view>
 
-<view class='tip-container {{view.tip}}'>
-  <label class='content'>this is a tip!</label>
-</view> -->
 
 

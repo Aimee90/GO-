@@ -1,7 +1,7 @@
 <view class='main-container'>
   <view class='banner'>
     <swiper indicator-dots='true' autoplay='true'>
-      <block wx:for="{{imgUrls}}">
+      <block wx:for="{{imgUrls}}" wx:key="item">
         <swiper-item>
           <image src='{{item}}' class='slide-img' width='400' height='150'></image>
         </swiper-item>
@@ -17,10 +17,10 @@
     <view bindtap='sortHandler' id='volume'>销量<icon class='trigger {{sort.volume}}'></icon></view>
   </view>
   <scroll-view>
-    <block wx:for="{{products}}" wx:for-item="item">
+    <block wx:for="{{products}}" wx:key="item">
       <view class='item cart' data-prid='{{item.id}}' bindtap='go2Detail'>
         <view class='content'>
-          <image src='{{item.imgUrl}}'></image>
+          <image src='{{item.proImg}}'></image>
         </view>
         <view class='buy-item'>
           <view class='prd-name'>{{item.name}}</view>

@@ -1,0 +1,46 @@
+<!--template/modal/modal.wxml-->
+<template name="addressEditModal"> 
+  <view class="modal-container {{!!modalshow?'':'hide'}}">
+    <view class='layer-box-shadow'></view>
+    <view class='layer-content'>
+      <view class='title block-item'>{{title}}</view>
+      <view class='content block-item'>
+        <picker-view indicator-style="height: 50px;" style="width: 100%; height: 100px;" value="{{value}}" bindchange="bindChange">
+          <picker-view-column>
+            <view wx:for="{{province}}" style="line-height: 50px">{{province}}省</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{city}}" style="line-height: 50px">{{city}}市</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{district}}" style="line-height: 50px">{{district}}区</view>
+          </picker-view-column>
+        </picker-view>
+        <input value='{{addr}}'></input>
+      </view>
+      <view class='opt'>
+        <button size='mini' class='ok' bindtap='{{ok}}'>确定</button>
+        <button size='mini' class='cancel' bindtap='{{cancel}}'>取消</button>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="tipTpl">
+  <view class="tip-container {{!!tipshow?'':'hide'}}">
+    <label class='content'>{{msg}}</label>
+  </view> 
+</template>
+
+<template name='bottomSlideModal'>
+  <view class='modal-container buttom-slide {{!!show?"":"hide"}}'>
+    <view class='layer-box-shadow' bindtap='{{maskTap}}'></view>
+    <view class='layer-content'>
+      <view class='content'>
+        <block  wx:for='{{selectItem}}' wx:key='item'>
+          <view class='{{!!item.selected?"selected":""}}' bindtap='{{tapEvent}}' data-id='{{item.id}}'>{{item.name}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>

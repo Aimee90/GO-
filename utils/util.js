@@ -16,8 +16,23 @@ const formatNumber = n => {
 
 const redirectTo = (url,param) =>{
   wx.navigateTo({
-    url: url,
+    url: url
   })
+}
+
+
+const Location = {
+  defaultKey: 'DEFAULT_RECEIVING_ADDRESS',
+  // 定位
+  locate: function(callback){
+    wx.chooseAddress({
+      success: function (res) {
+        // 默认收货地址修改
+        wx.setStorageSync(Location.defaultKey, res)
+        callback(res)
+      }
+    })
+  }
 }
 
 const showModal = (msg,title) =>{
@@ -38,5 +53,6 @@ module.exports = {
   formatTime: formatTime,
   redirectTo: redirectTo,
   showModal: showModal,
-  showToast: showToast
+  showToast: showToast,
+  Location: Location
 }

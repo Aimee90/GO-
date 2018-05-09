@@ -6,20 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    product:{
-      id: '1',
-      proImg: '../imgs/P1.jpg',
-      price: 150,
-      name: '产品一',
-      description: '产品说明产品说明产品说明产品说明产品说明产品说明产品说明',
-      labels: [{ name: '标签1', type: 'hot' }, { name: '标签2', type: 'rec'}],
-      specifications: [{ id: '1', name: '奇趣版', selected: true }, { id: '2',name: '标准版',selected: false}],
-      details:[
-        '../imgs/P1.jpg',
-        '../imgs/P2.jpg',
-        '../imgs/P3.jpg'
-      ]
-    },
     specShow: '',
     selected:{
       cart:[],
@@ -50,14 +36,12 @@ Page({
     })
   },
   go2Cart: function(){
-    // if (!this.data.selected.cart.length) return;
     var cart = [];
     this.data.selected.cart.map((value, key)=>{
       var specification = this.data.product.specifications.find((spec)=>{
         return spec.id == key;
       });
-      
-      cart.push(Object.assign({}, this.data.product, { specifications: specification }, { amount: value}));
+      cart.push(Object.assign({}, this.data.product, { amount: value}));
     });
     Utils.redirectTo('../cart/index?cart=' + JSON.stringify(cart));
   },
@@ -88,7 +72,7 @@ Page({
       selected = this.data.selected;
     var specifications = this.data.product.specifications.map((spec) => {
       if (spec.id == specId) {
-        spec.selected = !spec.selected;
+        spec.selected = true;//!spec.selected;
         selected.specName = spec.name;
       }else{
         spec.selected = false;
@@ -107,16 +91,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({initData:{
-      selected: this.data.selected
-    }})
+    this.setData({
+      product: JSON.parse(options.prod),
+      initData:{
+        selected: this.data.selected
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('page ready');
+    
   },
 
   /**

@@ -1,14 +1,16 @@
 <!--pages/cart/index.wxml-->
+<import src='../../template/modal/modal.wxml' />
+
 <block wx:if="{{cart.length==0}}">
   <view class="no-res">
     <image src='../imgs/cart.jpg'></image>
     <text>您的购物车还是空的哦</text>
   </view>
-  
 </block>
 <block wx:else>
     <view class='address block-item clearfix'>
-      <view class='info emphasize'>收货地址：<text>{{address}}</text></view>
+      <view class='info recieve-info emphasize'>{{receiver}}<text>{{phone}}</text></view>
+      <view class='info emphasize'>收货地址：<text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text></view>
       <view class='edit' bindtap='addressEdit'>编辑</view>
     </view>
     <view class="cart" wx:for="{{cart}}" wx:key="item">
@@ -16,7 +18,13 @@
         <view class='fl'><image src='{{item.proImg}}'></image></view>
         <view class='fr clearfix'>
           <view class='name'>{{item.name}}</view>
-          <view class='spec'>规格: {{item.specifications.name}}</view>
+          <block wx:for="{{item.specifications}}" wx:for-item="info">
+            <block wx:if="{{!!info.selected}}">
+              <view class='spec edit' bindtap='specSelectHandler' data-pid='{{item.id}}' data-id='{{info.id}}'> 
+                规格: {{info.name}}
+              </view>
+            </block> 
+          </block>
           <view class='price'>￥{{item.price}}</view>
           <!-- <view class='amount'>{{item.amount}}件</view> -->
           <view class='amount spec-num'>
@@ -30,8 +38,8 @@
       </view>
     </view>
 </block>
-
 <view class='footer'>
   <view class='clear-cart' hover-class='hover' bindtap='removeAll'>清空购物车</view>
   <view class='button' bindtap='clearCart'>结算</view>
 </view>
+<template is="bottomSlideModal" data="{{...specModal}}"/>

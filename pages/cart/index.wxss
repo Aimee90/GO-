@@ -1,4 +1,7 @@
 /* pages/cart/index.wxss */
+
+@import "../../template/modal/modal.wxss";
+
 page{
   background-color: #FFF;
 }
@@ -67,6 +70,7 @@ page{
   padding: 8px;
   font-size: 12px;
   color: #999;
+  border-top: 1px solid #EFEFEF;
 }
 .address>view{
   float: left;
@@ -77,10 +81,14 @@ page{
 .address>.info>text{
   font-weight: 100;
 }
-.address>.edit{
-  color: #00c37d;
+.edit{
+  color: #00c37d !important;
 }
 
 .spec-num>.num{
   float: right;
+}
+
+.recieve-info text{
+  margin-left: 34px;
 }
