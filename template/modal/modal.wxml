@@ -32,13 +32,20 @@
   </view> 
 </template>
 
+<!--底部弹出选择项模态框-->
 <template name='bottomSlideModal'>
   <view class='modal-container buttom-slide {{!!show?"":"hide"}}'>
-    <view class='layer-box-shadow' bindtap='{{maskTap}}'></view>
+    <view class='layer-box-shadow' bindtap='{{closeModal}}'></view>
     <view class='layer-content'>
+      <block wx:if="{{!!multi}}"> 
+        <view class='btn-group'>
+          <view class='btn cancel' bindtap='{{closeModal}}'>取消</view>
+          <view class='btn ok' bindtap='{{!!sure}}'>确定</view>
+        </view>
+      </block> 
       <view class='content'>
         <block  wx:for='{{selectItem}}' wx:key='item'>
-          <view class='{{!!item.selected?"selected":""}}' bindtap='{{tapEvent}}' data-id='{{item.id}}'>{{item.name}}</view>
+          <view class='{{item.id == selected?"selected":""}}' bindtap='{{tapEvent}}' data-id='{{item.id}}'>{{item.name}}</view>
         </block>
       </view>
     </view>

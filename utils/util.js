@@ -19,8 +19,6 @@ const redirectTo = (url,param) =>{
     url: url
   })
 }
-
-
 const Location = {
   defaultKey: 'DEFAULT_RECEIVING_ADDRESS',
   // 定位
@@ -28,7 +26,7 @@ const Location = {
     wx.chooseAddress({
       success: function (res) {
         // 默认收货地址修改
-        wx.setStorageSync(Location.defaultKey, res)
+        
         callback(res)
       }
     })

@@ -1,6 +1,5 @@
 <!--pages/cart/index.wxml-->
 <import src='../../template/modal/modal.wxml' />
-
 <block wx:if="{{cart.length==0}}">
   <view class="no-res">
     <image src='../imgs/cart.jpg'></image>
@@ -17,21 +16,16 @@
       <view class='prod-item clearfix'>
         <view class='fl'><image src='{{item.proImg}}'></image></view>
         <view class='fr clearfix'>
-          <view class='name'>{{item.name}}</view>
-          <block wx:for="{{item.specifications}}" wx:for-item="info">
-            <block wx:if="{{!!info.selected}}">
-              <view class='spec edit' bindtap='specSelectHandler' data-pid='{{item.id}}' data-id='{{info.id}}'> 
-                规格: {{info.name}}
-              </view>
-            </block> 
-          </block>
+          <view class='name'>{{item.name}}</view> 
+          <view class='spec edit' bindtap='specSelectHandler' data-pid='{{item.id}}' data-id='{{item.specification.id}}'> 
+            规格: {{item.specification.name}}
+          </view> 
           <view class='price'>￥{{item.price}}</view>
-          <!-- <view class='amount'>{{item.amount}}件</view> -->
           <view class='amount spec-num'>
             <view class='num'>
-              <view bindtap='amountHandler' data-type='m' data-prodid='{{item.id}}' data-specid='{{item.specifications.id}}' class='icon minus {{item.amount<=1?"disabled":""}}'>-</view>
-              <view class='info'>{{item.amount}}</view>
-              <view bindtap='amountHandler' data-type='a' data-prodid='{{item.id}}' data-specid='{{item.specifications.id}}'  class='icon add'>+</view>
+              <view bindtap='amountHandler' data-type='m' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}' class='icon minus {{item.amount<=1?"disabled":""}}'>-</view>
+              <view class='info'>{{item.specification.amount}}</view>
+              <view bindtap='amountHandler' data-type='a' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}'  class='icon add'>+</view>
             </view>
           </view>
         </view>

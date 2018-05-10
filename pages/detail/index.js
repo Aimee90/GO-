@@ -1,5 +1,6 @@
 // pages/detail/index.js
 const Utils = require('../../utils/util.js')
+const Cart = require('../../utils/cart.js')
 Page({
 
   /**
@@ -8,11 +9,11 @@ Page({
   data: {
     specShow: '',
     selected:{
-      cart:[],
-      num: 1,
-      amount: 0,
-      spec: 1,
-      specName: '奇趣版'
+      cart:{},  //购物车商品明细
+      num: 1,       //当前选择的规格数目
+      amount: 0,    //购物车商品数目
+      spec: 1,      //当前选中的规格
+      specName: '奇趣版' //当前选中规格描述
     },
     icon:{
       minusabled: 'disabled',
@@ -28,22 +29,25 @@ Page({
       return;
     }
     selected.amount = selected.amount + selected.num;
-    var cart = selected.cart || {};
+    var cart = selected.cart;
     cart[selected.spec] = !!cart[selected.spec] ? cart[selected.spec] + selected.num : selected.num;
     selected.cart = cart;
     this.setData({
       selected: selected
-    })
+    })  
+
+    // 加入购物车
+    Cart.setCart(Object.assign({}, this.data.product, {
+      specification: this.data.product.specifications.find(spec => {
+        if (spec.id == selected.spec) {
+          spec.amount = selected.num;
+          return true;
+        }
+      })
+    }));
   },
   go2Cart: function(){
-    var cart = [];
-    this.data.selected.cart.map((value, key)=>{
-      var specification = this.data.product.specifications.find((spec)=>{
-        return spec.id == key;
-      });
-      cart.push(Object.assign({}, this.data.product, { amount: value}));
-    });
-    Utils.redirectTo('../cart/index?cart=' + JSON.stringify(cart));
+    Utils.redirectTo('../cart/index');
   },
   addHandler: function(){
     var selected = this.data.selected,
@@ -91,10 +95,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var selectedAmount = 0;
+    Cart.getCart().map(c=>{
+      selectedAmount += c.specifications.amount; 
+    }); 
+    var selected = this.data.selected;
+    selected.amount = selectedAmount; 
     this.setData({
       product: JSON.parse(options.prod),
       initData:{
-        selected: this.data.selected
+        selected: selected
       }
     })
   },
@@ -110,8 +120,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var selectedAmount = 0;
+    Cart.getCart().map(c => {
+      selectedAmount += c.specification.amount;
+    });
+    var selected = this.data.initData.selected;
+    selected.amount = selectedAmount; 
     this.setData({
-      selected: this.data.initData.selected
+      selected: selected
     })
   },
 

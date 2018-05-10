@@ -2,6 +2,7 @@
 const Utils = require('../../utils/util.js')
 // modal from bottom
 const Modal = require('../../template/modal/modal.js')
+const Cart = require('../../utils/cart.js')
 Page({
 
   /**
@@ -10,6 +11,7 @@ Page({
   data: {
   },
   removeAll: function(){
+    Cart.clear();
     this.setData({
       cart: []
     })
@@ -44,7 +46,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const cart = JSON.parse(options.cart);
     var loc = wx.getStorageSync(Utils.Location.defaultKey);
     loc = !!loc ? loc : {}
     this.setData({
@@ -56,20 +57,16 @@ Page({
         countyName: loc.countyName||'',
         detailInfo: loc.detailInfo||''
       },
-      cart: cart
+      cart: Cart.getCart()
     })
   },
   specSelectHandler: function(e){
       const id = e.target.dataset.id,pid = e.target.dataset.pid;
-      const product = this.data.cart.find((item)=>{
-        if(item.id==pid){
-          return item;
-        }
-      })
+      const product = this.data.cart.find(prod=>pid==prod.id);
       this.setData({
         specModal: Modal.BModal.init({
           maskHidden: true,
-          parendId: product.id,
+          parentId: product.id,
           selected: id,
           selectItem: product.specifications,
           tapEvent: 'specChoose',
@@ -78,10 +75,22 @@ Page({
       })
   },
   specChoose: function(e){
-    var specId = e.target.dataset.id, 
-        productId = this.data.specModal.parentId;
-    this.data.cart.map(item=>{
-
+    var chooseId = e.target.dataset.id, 
+      specModal = this.data.specModal;
+    // 原规格id与产品id
+    var selectId = specModal.selected, productId = specModal.parentId;
+    const cart = this.data.cart; 
+    cart.map(item=>{
+      if (item.id == productId && item.specification.id == selectId  && chooseId != selectId){
+        Cart.remove(item);
+        var specification = item.specifications.find(spec => spec.id == chooseId); 
+        specification.amount = item.specification.amount;
+        console.log(specification);
+        Cart.setCart(Object.assign({}, item, { specification: specification}));
+      }
+    })
+    this.setData({
+      cart: Cart.getCart()
     })
     this.specClose();
   },

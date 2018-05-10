@@ -61,12 +61,30 @@ textarea{
 }
 
 .buttom-slide>.layer-content{
-  bottom:0;
-  top:auto;
-  width:100%;
-  margin:0;
-  border-radius:0;
-  padding:20px 0;
+  bottom: 0;
+  top: auto;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  padding-bottom: 20px;
+  padding-top: 0;
+}
+
+.buttom-slide>.layer-content>.btn-group{
+  position: relative;
+  height: 34px;
+}
+.buttom-slide>.layer-content .btn{
+  position: absolute;
+  height: 20px;
+  width: 45px;
+  top: 7px;
+}
+.buttom-slide>.layer-content .ok{
+  right:35px;
+}
+.buttom-slide>.layer-content .cancel{
+  left:15px;
 }
 .buttom-slide>.layer-content>.content{
   min-height: 34px;
