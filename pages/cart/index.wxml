@@ -12,24 +12,29 @@
       <view class='info emphasize'>收货地址：<text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text></view>
       <view class='edit' bindtap='addressEdit'>编辑</view>
     </view>
-    <view class="cart" wx:for="{{cart}}" wx:key="item">
-      <view class='prod-item clearfix'>
-        <view class='fl'><image src='{{item.proImg}}'></image></view>
-        <view class='fr clearfix'>
-          <view class='name'>{{item.name}}</view> 
-          <view class='spec edit' bindtap='specSelectHandler' data-pid='{{item.id}}' data-id='{{item.specification.id}}'> 
-            规格: {{item.specification.name}}
-          </view> 
-          <view class='price'>￥{{item.price}}</view>
-          <view class='amount spec-num'>
-            <view class='num'>
-              <view bindtap='amountHandler' data-type='m' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}' class='icon minus {{item.amount<=1?"disabled":""}}'>-</view>
-              <view class='info'>{{item.specification.amount}}</view>
-              <view bindtap='amountHandler' data-type='a' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}'  class='icon add'>+</view>
+    <view class="cart">
+      <block wx:for="{{cart}}" wx:for-item="item"  wx:for-index="index">
+      <view class='prod-item clearfix' style='{{listSlideX[index]}}'>
+        <view class='info' data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE">
+          <view class='fl'><image src='{{item.proImg}}'></image></view>
+          <view class='fr clearfix'>
+            <view class='name'>{{item.name}}</view> 
+            <view class='spec edit'> 
+              <text bindtap='specSelectHandler' data-pid='{{item.id}}' data-id='{{item.specification.id}}'>规格: {{item.specification.name}}</text>
+            </view> 
+            <view class='price'>￥{{item.price}}</view>
+            <view class='amount spec-num'>
+              <view class='num'>
+                <view bindtap='amountHandler' data-type='m' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}' class='icon minus {{item.amount<=1?"disabled":""}}'>-</view>
+                <view class='info'>{{item.specification.amount}}</view>
+                <view bindtap='amountHandler' data-type='a' data-prodid='{{item.id}}' data-specid='{{item.specification.id}}'  class='icon add'>+</view>
+              </view>
             </view>
-          </view>
+          </view>        
         </view>
+        <view class='del' bindtap='deleteCart' data-index='{{index}}'>删除</view>
       </view>
+      </block>
     </view>
 </block>
 <view class='footer'>

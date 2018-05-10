@@ -3,6 +3,7 @@ const Utils = require('../../utils/util.js')
 // modal from bottom
 const Modal = require('../../template/modal/modal.js')
 const Cart = require('../../utils/cart.js')
+const slideTouch = require('../../utils/slideTouch.js')
 Page({
 
   /**
@@ -37,27 +38,9 @@ Page({
           optype = e.target.dataset.type;
     this.setData({
       cart: this.data.cart.map((item) => {
-        item.id == prodId && item.specifications.id == specId && ('a' == optype ? item.amount++ : item.amount>1&&item.amount--);
+        item.id == prodId && item.specification.id == specId && ('a' == optype ? item.specification.amount++ : item.specification.amount > 1 && item.specification.amount--);
         return item;
       })
-    })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var loc = wx.getStorageSync(Utils.Location.defaultKey);
-    loc = !!loc ? loc : {}
-    this.setData({
-      receiver: loc.userName||'',
-      phone: loc.telNumber||'',
-      address: {
-        provinceName: loc.provinceName||'',
-        cityName: loc.cityName||'',
-        countyName: loc.countyName||'',
-        detailInfo: loc.detailInfo||''
-      },
-      cart: Cart.getCart()
     })
   },
   specSelectHandler: function(e){
@@ -98,6 +81,36 @@ Page({
     var specModal = this.data.specModal;
     this.setData({
       specModal: specModal.close()
+    })
+  },
+  deleteCart: function(e){
+    const cartItem = this.data.cart[e.currentTarget.dataset.index];
+    Cart.remove(cartItem);
+    this.setData({
+      cart: Cart.getCart()
+    })
+    this.reset();
+  },
+  touchS: slideTouch.touchS,
+  touchM: slideTouch.touchM,
+  touchE: slideTouch.touchE,
+  reset: slideTouch.reset,
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var loc = wx.getStorageSync(Utils.Location.defaultKey);
+    loc = !!loc ? loc : {}
+    this.setData({
+      receiver: loc.userName || '',
+      phone: loc.telNumber || '',
+      address: {
+        provinceName: loc.provinceName || '',
+        cityName: loc.cityName || '',
+        countyName: loc.countyName || '',
+        detailInfo: loc.detailInfo || ''
+      },
+      cart: Cart.getCart()
     })
   },
   /**

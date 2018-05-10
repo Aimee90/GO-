@@ -25,46 +25,60 @@ page{
 }
 
 .prod-item{
+  width: 125%;
   height: 78px;
   padding: 4px;
   padding-right: 8px;
+  position:relative;
 }
-.prod-item>.fl,.prod-item>.fr{
+.prod-item>.info{
+  width: 80%;
+}
+.prod-item>.del{
+  width: 60px;
+  text-align: center;
+  line-height: 78px;
+  color: #FFF; 
+  background-color: red;
+}
+.prod-item>view{
+  height: 100%;
+  float: left;
+}
+.prod-item>.info>.fl,.prod-item>.info>.fr{
   height: 100%;
 }
-.prod-item>.fl{
-  width: 34%;
+.prod-item>.info>.fl{
+  width: 32%;
 }
-.prod-item>.fl>image{
+.prod-item>.info>.fl>image{
   width: 100%;
   height: 100%;
 }
-.prod-item>.fr{
+.prod-item>.info>.fr{
   width: 64%;
-  margin-left: 2%;
+  margin-right: 2%;
 }
-.prod-item>.fr>view{
+.prod-item>.info>.fr>view.price,.prod-item>.info>.fr>view.amount{
   float: left;
 }
-.prod-item>.fr>.name,.prod-item>.fr>.spec{
+.prod-item>.info>.fr>.name,.prod-item>.info>.fr>.spec{
   width: 100%;
   height: 24px;
 }
-.prod-item>.fr>.spec{
+.prod-item>.info>.fr>.spec{
   font-size: 12px;
   color: #999;
   padding-left: 4px;
 }
-.prod-item>.fr>.price,.prod-item>.fr>.amount{
+.prod-item>.info>.fr>.price,.prod-item>.info>.fr>.amount{
   width: 50%;
 }
-.prod-item>.fr>.amount{
+.prod-item>.info>.fr>.amount{
   text-align: right;
   font-size: 12px;
   color: #999;
 }
-
-
 .address{
   position: relative;
   padding: 8px;
@@ -92,3 +106,4 @@ page{
 .recieve-info text{
   margin-left: 34px;
 }
+
