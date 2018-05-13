@@ -3,7 +3,9 @@ page{
   background: #efefef;
   font-size: 14px;
 }
-
+.edit{
+  color: #00c37d !important;
+}
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; 

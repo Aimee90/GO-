@@ -95,9 +95,6 @@ page{
 .address>.info>text{
   font-weight: 100;
 }
-.edit{
-  color: #00c37d !important;
-}
 
 .spec-num>.num{
   float: right;

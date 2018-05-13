@@ -1,0 +1,49 @@
+page{
+  background-color: #FFF;
+  font-size: 14px;
+}
+.icon{
+  display: inline-block;
+  color: #FFF;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+.icon.add{
+  background-color: #528B8B;
+}
+.icon.minus{
+  background-color: red;
+}
+.container{
+  padding: 0;
+  border-top: 1px solid #EFEFEF;
+}
+.block-info{
+  width: 100%;
+  vertical-align: middle;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.block-info>view{
+  float: left;
+  min-height: 1.4rem;
+  padding: 10px 0;
+}
+.block-info>.title{
+  text-align: center;
+  width: 22%;
+  border-right: 1px solid #EFEFEF;
+}
+.block-info>.content{
+  width: 76%;
+  padding-left: 6px;
+  position: relative;
+}
+.block-info .edit{
+  position: absolute;
+  right: 8px;
+}
